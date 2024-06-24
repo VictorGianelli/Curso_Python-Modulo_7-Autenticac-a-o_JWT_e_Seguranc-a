@@ -10,5 +10,5 @@ class BalanceEditor:
         return {
             "type": "User",
             "count": 1,
-            "new balance": new_balance
+            "new_balance": new_balance
         }
