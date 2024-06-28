@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from src.errors.error_handler import handle_errors
 from src.views.http_types.http_request import HttpRequest
 
 from src.main.composer.user_register_composer import user_register_composer
@@ -16,6 +17,7 @@ def registry_user():
     http_response = user_register_composer().handle(http_request)
     return jsonify(http_response.body), http_response.status_code
   except Exception as exception:
+    http_response = handle_errors(exception)
     return jsonify(http_response.body), http_response.status_code
 
 @bank_routes_bp.route("/bank/login", methods=["POST"])
@@ -25,6 +27,7 @@ def create_login():
     http_response = login_creator_composer().handle(http_request)
     return jsonify(http_response.body), http_response.status_code
   except Exception as exception:
+    http_response = handle_errors(exception)
     return jsonify(http_response.body), http_response.status_code
 
 @bank_routes_bp.route("/bank/balance/<user_id>", methods=["PATCH"])
@@ -39,4 +42,5 @@ def edit_balance(user_id):
     http_response = balance_editor_composer().handle(http_request)
     return jsonify(http_response.body), http_response.status_code
   except Exception as exception:
+    http_response = handle_errors(exception)
     return jsonify(http_response.body), http_response.status_code
