@@ -4,7 +4,7 @@ from src.controllers.balance_editor import BalanceEditor
 from src.views.balance_editor_view import BalanceEditorView
 
 def balance_editor_composer():
-  conn = db_connection_handler.get_connection()
+  conn = db_connection_handler.get_conect()
   model = UserRepository(conn)
   controller = BalanceEditor(model)
   view = BalanceEditorView(controller)

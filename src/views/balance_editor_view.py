@@ -21,5 +21,5 @@ class BalanceEditorView(ViewInterface):
       not new_balance
       or not user_id
       or not isinstance(new_balance, float)
-      or int(header_user_id) != int(user_id)
+      # or int(header_user_id) != int(user_id)
     ): raise Exception("Invalid Input")
